@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Task 1 To do list</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <!-- <section style="height: 30vh;width: 100%;background: url(&quot;assets/img/photo-1585409677983-0f6c41ca9c3b.jpg&quot;);background-size: cover;background-position: center;"></section> -->
+     <section style="height: 30vh;width: 100%;background: url(&quot;assets/img/photo-1585409677983-0f6c41ca9c3b.jpg&quot;);background-size: cover;background-position: center;"></section>
+    <main style="position: absolute;top: 15vh;width: 50%;height: calc(100% - 15vh);left: 50%;transform: translateX(-50%);background: #ffffff85;box-shadow: 1px 1px 6px rgb(83 82 82);backdrop-filter: blur(5px);">
+        <h4 style="text-align: center;padding: .5em;color: rgb(0,117,255);">T o d o</h4>
+        <ul class="list-group" id="items">
+            
+        </ul>
+        <div style="height: 50px;width: 100%;"></div>
+        <div style="position: absolute;bottom: 0;left: 0;right: 0;box-shadow: 1px -1px 13px #000000ab;">
+            <div class="row m-0">
+                <div class="col-10 p-0">
+                    <input type="text" class="form-control rounded-0 " id="text" placeholder="Type Your Note Here"/>
+                </div>
+                <div class="col-2 p-0">
+                    <button class="btn btn-primary w-100 rounded-0" style="float: right;" onclick="add_note();" type="button">Add</button>
+                </div>
+            </div>
+        </div>
+        <script>
+            let id = 0;
+            function add_note() {
+                let text = document.getElementById("text").value;
+                let box = document.getElementById("items");
+                if(text != null && text != "") {
+                    let div = document.createElement("div");
+                    let item = '<li id="item-'+id+'" class="list-group-item d-flex justify-content-between align-items-center" onclick="href=&#39;input.html&#39;"><a href="#"><span>'+text+'</span></a><button onclick="remove('+id+')" style="float: right;" class="btn btn-outline-danger rounded-circle">X</button></li>';
+                    div.innerHTML = item;
+                    box.append(div);
+                    id++;
+                } else {
+                    alert("Please Enter Content");
+                }
+            }
+
+            function remove(id) {
+                let item = document.getElementById("item-"+id);
+                item.remove();
+            }
+        </script>
+    </main>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
