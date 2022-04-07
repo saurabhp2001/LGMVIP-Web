@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Simple Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style type="text/css">
+        * {
+            box-sizing: border-box;
+        }
+        html, body {
+            position: relative;
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .btns {
+            grid-template-columns: auto auto auto auto;
+            gap: .5em;
+            background: #ffffff73;
+            backdrop-filter: blur(1em);
+        }
+        .btns button {
+            padding: 2em 0;
+            background: #0000003b;
+            color: white;
+
+        }
+        .top {
+            background: #ffffff45;
+            margin-bottom: 1em;
+        }
+        .top :nth-child(n) {
+            padding: 2em 2em;
+        }
+        .bg {
+            background: url(bg.jpg);
+        }
+        .blur1 {
+            backdrop-filter: blur(1em);
+        }
+        button:hover {
+            transform: scale(1.04);
+            transition: ease-in-out .05s;
+        }
+    </style>
+</head>
+<script>
+    function clear() {
+        let in2 = document.getElementById("input_id");
+        in2.innerHTML = "0";
+    }
+</script>
+<body>
+    <div class="container">
+        <div class="shadow rounded-3 my-5 bg">
+            <div class="p-3 blur1" style="background: #ffffff30;">
+                
+            <div class="p-3 d-flex top rounded-3">
+                <div id="input_id" class="form-control w-75" style="background: #00000033;color: white;">0</div>
+                <span class="px-1"></span>
+                <button class="w-25 btn btn-danger" id="clear">C</button>
+            </div>
+
+            <div class="d-grid btns p-3 rounded-3"> 
+                <button class="w-100 btn " onclick="input1('1');">1</button>
+                <button class="w-100 btn " onclick="input1('2');">2</button>              
+                <button class="w-100 btn " onclick="input1('3');">3</button>
+                <button class="w-100 btn " onclick="input1('+');">+</button>
+                <button class="w-100 btn " onclick="input1('4');">4</button>
+                <button class="w-100 btn " onclick="input1('5');">5</button>
+                <button class="w-100 btn " onclick="input1('6');">6</button>
+                <button class="w-100 btn " onclick="input1('-');">-</button>
+                <button class="w-100 btn " onclick="input1('7');">7</button>
+                <button class="w-100 btn " onclick="input1('8');">8</button>
+                <button class="w-100 btn " onclick="input1('9');">9</button>
+                <button class="w-100 btn " onclick="input1('*');">*</button>
+                <button class="w-100 btn " onclick="input1('.');">.</button>
+                <button class="w-100 btn " onclick="input1('0');">0</button>
+                <button class="w-100 btn " onclick="Result();">=</button>
+                <button class="w-100 btn " onclick="input1('/');">/</button>
+            </div>       
+        </div>
+    </div>
+    </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+
+    document.getElementById("clear").addEventListener("click",clear);
+
+    let in2 = document.getElementById("input_id");
+    function input1(val) {
+        if(in2.innerHTML === "0") {
+            in2.innerHTML = ""+val;
+        } else {
+            in2.innerHTML += val;
+        }
+        console.log(in2.innerHTML)
+    }
+
+    function Result() {
+        // alert("Result Declared");
+        // let op = in2.innerHTML;
+        try {
+            in2.innerHTML = eval(in2.innerHTML);
+        } catch (e) {
+            alert("Error");
+        }
+    }
+</script>
+</body>
+</html>
